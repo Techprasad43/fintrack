@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8fc">
+  <title>FinTrack — Personal finance, made clear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#overview"><span class="brand-mark">F</span><span>fintrack<span class="brand-dot">.</span></span></a>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav class="nav-list" aria-label="Main navigation">
+      <a class="nav-item active" href="#overview"><span class="nav-icon">◫</span>Overview</a><a class="nav-item" href="#transactions"><span class="nav-icon">⇄</span>Transactions</a><a class="nav-item" href="#budgets"><span class="nav-icon">◷</span>Budgets</a><a class="nav-item" href="#insights"><span class="nav-icon">✦</span>AI insights <span class="new-tag">NEW</span></a>
+    </nav>
+    <div class="sidebar-spacer"></div>
+    <div class="upgrade-card"><div class="upgrade-spark">✦</div><strong>A clearer view<br>of your money</strong><p>Small steps today make a difference tomorrow.</p><a href="#insights">Explore insights <span>→</span></a><div class="upgrade-orbit"></div><div class="upgrade-orbit orbit-two"></div></div>
+    <a class="nav-item settings-link" href="#settings"><span class="nav-icon">⚙</span>Settings</a>
+    <div class="profile-row"><div class="avatar">JD</div><div class="profile-copy"><strong>Jordan Davis</strong><span>Personal account</span></div><button class="more-button" aria-label="Profile options">···</button></div>
+  </aside>
+  <main class="main-content" id="overview">
+    <header class="topbar"><button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button><div class="breadcrumb">Workspace <span>/</span> <strong>Overview</strong></div><div class="top-actions"><button class="icon-button" aria-label="Notifications">♧<i></i></button><div class="top-avatar">JD</div></div></header>
+    <section class="page-heading"><div><div class="eyebrow"><span class="live-dot"></span>YOUR FINANCES AT A GLANCE</div><h1>Good morning, Jordan <span class="wave">✦</span></h1><p>Here’s what’s happening with your money this month.</p></div><div class="heading-actions"><button class="button button-soft" id="exportBtn"><span>↓</span>Export</button><button class="button button-primary" id="openModal"><span>＋</span>Add transaction</button></div></section>
+    <section class="stat-grid" aria-label="Monthly financial summary">
+      <article class="stat-card"><div class="stat-top"><span>Total balance</span><span class="stat-icon balance-icon">◈</span></div><div class="stat-value" id="balanceValue">$8,420.50</div><div class="stat-foot"><span class="trend-up">↗ 8.2%</span><span>vs. last month</span><svg class="sparkline" viewBox="0 0 112 34" aria-hidden="true"><path d="M2 27 C14 23 13 19 24 22 S39 26 47 15 S63 21 72 12 S83 20 92 9 S103 9 110 3"/></svg></div></article>
+      <article class="stat-card"><div class="stat-top"><span>Income</span><span class="stat-icon income-icon">↙</span></div><div class="stat-value" id="incomeValue">$5,240.00</div><div class="stat-foot"><span class="trend-up">↗ 4.6%</span><span>vs. last month</span></div><div class="mini-progress"><span style="width:72%"></span></div></article>
+      <article class="stat-card"><div class="stat-top"><span>Expenses</span><span class="stat-icon expense-icon">↗</span></div><div class="stat-value" id="expenseValue">$2,819.50</div><div class="stat-foot"><span class="trend-down">↘ 2.1%</span><span>vs. last month</span></div><div class="mini-progress expense-progress"><span style="width:49%"></span></div></article>
+      <article class="stat-card"><div class="stat-top"><span>Savings rate</span><span class="stat-icon savings-icon">◎</span></div><div class="stat-value">46.2<span class="value-unit">%</span></div><div class="stat-foot"><span class="trend-up">+3.4%</span><span>this month</span></div><div class="mini-progress savings-progress"><span style="width:46%"></span></div></article>
+    </section>
+    <section class="content-grid">
+      <article class="panel spending-panel" id="insights"><div class="panel-heading"><div><h2>Spending overview</h2><p>Keep an eye on where it goes</p></div><select id="periodSelect" class="select-control" aria-label="Select spending period"><option value="month">This month</option><option value="week">This week</option></select></div><div class="chart-summary"><div><span class="muted-label">TOTAL SPENT</span><strong id="chartTotal">$2,819.50</strong></div><div class="legend"><span><i class="legend-dot actual-dot"></i>Spent</span><span><i class="legend-dot budget-dot"></i>Budget</span></div></div><div class="chart-area" id="spendingChart" aria-label="Spending by category compared with budget"></div><div class="chart-note"><span class="note-icon">✦</span><span><strong>Nice work!</strong> You’re spending 12% less on dining than last month.</span><button class="note-arrow" aria-label="View insight">→</button></div></article>
+      <article class="panel budget-panel" id="budgets"><div class="panel-heading"><div><h2>Budget progress</h2><p>Monthly category limits</p></div><a class="text-link" href="#budgets">See all <span>→</span></a></div><div class="budget-list" id="budgetList"></div><button class="budget-add" id="addBudgetBtn"><span>＋</span>Create a budget</button></article>
+    </section>
+    <section class="panel transactions-panel" id="transactions"><div class="panel-heading transaction-heading"><div><h2>Recent transactions</h2><p>Your latest money movements</p></div><div class="transaction-tools"><label class="search-box"><span>⌕</span><input type="search" id="transactionSearch" placeholder="Search transactions" aria-label="Search transactions"></label><select id="filterSelect" class="select-control" aria-label="Filter transactions"><option value="all">All activity</option><option value="income">Income</option><option value="expense">Expenses</option></select><a class="text-link desktop-link" href="#transactions">View all <span>→</span></a></div></div><div class="table-wrap"><table><thead><tr><th>TRANSACTION</th><th>CATEGORY</th><th>DATE</th><th>PAYMENT</th><th class="align-right">AMOUNT</th></tr></thead><tbody id="transactionRows"></tbody></table></div><div class="empty-state" id="emptyState" hidden>No transactions match your search.</div></section>
+    <footer class="page-footer"><span>FinTrack <b>·</b> Your money, more mindful.</span><span>Demo data is stored in this browser.</span></footer>
+  </main>
+</div>
+<dialog class="transaction-dialog" id="transactionDialog"><form id="transactionForm"><div class="dialog-top"><div><span class="eyebrow">KEEP IT UP TO DATE</span><h2>Add transaction</h2></div><button class="dialog-close" type="button" id="closeModal" aria-label="Close">×</button></div><label class="field-label">Transaction name<input name="name" required maxlength="40" placeholder="e.g. Grocery shopping"></label><div class="field-row"><label class="field-label">Amount<input name="amount" type="number" min="0.01" step="0.01" required placeholder="0.00"></label><label class="field-label">Type<select name="type"><option value="expense">Expense</option><option value="income">Income</option></select></label></div><div class="field-row"><label class="field-label">Category<select name="category"><option>Food &amp; dining</option><option>Shopping</option><option>Transport</option><option>Housing</option><option>Entertainment</option><option>Health</option><option>Salary</option><option>Other</option></select></label><label class="field-label">Date<input name="date" type="date" required></label></div><label class="field-label">Payment method<select name="payment"><option>Debit card</option><option>Credit card</option><option>Bank transfer</option><option>Cash</option></select></label><div class="dialog-actions"><button class="button button-soft" type="button" id="cancelModal">Cancel</button><button class="button button-primary" type="submit">Save transaction</button></div></form></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
